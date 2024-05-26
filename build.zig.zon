@@ -1,0 +1,12 @@
+.{
+    .name = "zig-bench",
+    .version = "0.0.1",
+    .dependencies = .{
+        .zig_bench
+},
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "src",
+    },
+}

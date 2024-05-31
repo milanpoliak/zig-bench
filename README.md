@@ -8,11 +8,15 @@ Simple benchmarking tool for Zig.
 
 1. Add Zig Bench to `build.zig.zon` dependencies
 
+Either run `zig fetch --save https://github.com/milanpoliak/zig-bench/archive/refs/tags/v0.0.3.tar.gz`
+
+or add it manually
+
 ```zig
 ...
 .dependencies = .{
-    .zig_bench = .{
-        .url = "https://github.com/milanpoliak/zig-bench/archive/refs/tags/v0.0.2.tar.gz",
+    .@"zig-bench" = .{
+        .url = "https://github.com/milanpoliak/zig-bench/archive/refs/tags/v0.0.3.tar.gz",
         .hash = "...", // TODO:
     },
 },
@@ -22,17 +26,23 @@ Simple benchmarking tool for Zig.
 2. Add Zig Bench to `build.zig`
 
 ```zig
-const zig_bench = b.dependency("zig_bench", .{
+const zig_bench = b.dependency("zig-bench", .{
     .target = target,
     .optimize = optimize,
 });
 
-exe.root_module.addImport("zig_bench", zig_bench.module("zig_bench"));
+exe.root_module.addImport("zig-bench", zig_bench.module("zig-bench"));
 ```
 
 ### Run
 
 ```zig
+// Import Zig Bench
+const zig_bench = @import("zig-bench");
+const Bench = zig_bench.Bench;
+const Config = zig_bench.Config;
+const table = zig_bench.table;
+
 // Create void functions to benchmark
 fn doSomething() void { ... }
 fn doSomethingElse() void { ... }
@@ -58,7 +68,7 @@ try bench.addReference("fast implementation somewhere else", 420);
 try bench.run();
 
 // Print results in a table (or use bench.measurements directly to report it in other formats)
-try writeTable(&bench, std.io.getStdOut().writer(), allocator)
+try table.writeTable(&bench, std.io.getStdOut().writer(), allocator)
 ```
 
 Example table output

@@ -12,7 +12,7 @@ Simple benchmarking tool for Zig.
 ...
 .dependencies = .{
     .zig_bench = .{
-        .url = "https://github.com/milanpoliak/zig-bench/archive/refs/tags/v0.0.1",
+        .url = "https://github.com/milanpoliak/zig-bench/archive/refs/tags/v0.0.2.tar.gz",
         .hash = "...", // TODO:
     },
 },

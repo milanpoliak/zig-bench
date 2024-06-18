@@ -54,6 +54,7 @@ pub const Bench = struct {
     definitions: ArrayList(Definition),
     measurements: ArrayList(Measurement),
     references: ArrayList(Reference),
+    total_time: u64 = 0,
 
     pub fn init(allocator: Allocator, writer: ?Writer, config: Config) Bench {
         return Bench {
@@ -148,6 +149,8 @@ pub const Bench = struct {
         std.mem.sort(u64, times.items, {}, std.sort.asc(u64));
 
         const mean = sum / times.items.len;
+
+        self.total_time += sum;
 
         try self.measurements.append(Measurement {
             .name = definition.name,

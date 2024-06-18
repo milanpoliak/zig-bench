@@ -8,19 +8,8 @@ Simple benchmarking tool for Zig.
 
 1. Add Zig Bench to `build.zig.zon` dependencies
 
-Either run `zig fetch --save https://github.com/milanpoliak/zig-bench/archive/refs/tags/v0.0.3.tar.gz`
-
-or add it manually
-
-```zig
-...
-.dependencies = .{
-    .@"zig-bench" = .{
-        .url = "https://github.com/milanpoliak/zig-bench/archive/refs/tags/v0.0.3.tar.gz",
-        .hash = "...", // TODO:
-    },
-},
-...
+```shell
+zig fetch --save https://github.com/milanpoliak/zig-bench/archive/refs/tags/v0.0.4.tar.gz
 ```
 
 2. Add Zig Bench to `build.zig`

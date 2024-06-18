@@ -1,6 +1,6 @@
 .{
     .name = "zig-bench",
-    .version = "0.0.1",
+    .version = "0.0.4",
     .paths = .{
         "build.zig",
         "build.zig.zon",
